@@ -1,14 +1,15 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"; // Ensure you import the CSS for react-toastify
 import { Bounce } from "react-toastify"; // Import Bounce transition
+import { MyContext } from "../context/usercontext"; // Import your context
 
 const Login = () => {
   const [showpass, setshowpass] = useState(false);
-  const [userData, setUserData] = useState({ username: "", password: "" }); // State to store user data
-
+  const { data, setData } = useContext(MyContext); // Access context values
+  
   const PasswordToggler = () => {
     setshowpass(!showpass);
   };
@@ -19,32 +20,35 @@ const Login = () => {
   }
 
   const { register, handleSubmit } = useForm<IFormInput>();
-  const onSubmit: SubmitHandler<IFormInput> = (data) => {
-    console.log(data);
-    setUserData(data); // Update userData with submitted form data
+  const onSubmit: SubmitHandler<IFormInput> = (formData) => {
+    console.log(formData);
+    console.log(data); // Log context data
+    // Update context with form data
+    setData(`Welcome, ${formData.username}!`);
 
     // Show toast notifications
     toast.success("Login Successfully");
-    toast.info(`Welcome ${data.username}`);
+    toast.info(`Welcome ${formData.username}`);
   };
 
   return (
     <>
-   <ToastContainer
-              position="top-center"
-              autoClose={1000}
-              limit={30}
-              newestOnTop={false}
-              closeOnClick={false}
-              rtl={false}
-              pauseOnFocusLoss
-              draggable
-              pauseOnHover
-              theme="light"
-              transition={Bounce}
-            />
+      <ToastContainer
+        position="top-center"
+        autoClose={1000}
+        limit={30}
+        newestOnTop={false}
+        closeOnClick={false}
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        transition={Bounce}
+      />
       <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100">
         <h1 className="font-bold text-center text-blue-600 mb-6">Login</h1>
+        {/* <p className="text-center mb-4">{data}</p> Display context data */}
         <div className="w-full max-w-md p-8 bg-white rounded-lg shadow-md">
           <div className="font-semibold text-center text-blue-600 mb-6">
             <form onSubmit={handleSubmit(onSubmit)}>
