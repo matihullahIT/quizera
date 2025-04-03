@@ -1,3 +1,4 @@
+// import { useNavigate } from "react-router-dom";
 import { useState, useContext } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { FaEyeSlash, FaEye } from "react-icons/fa";
@@ -6,14 +7,28 @@ import "react-toastify/dist/ReactToastify.css"; // Ensure you import the CSS for
 import { Bounce } from "react-toastify"; // Import Bounce transition
 import { MyContext } from "../context/usercontext"; // Import your context
 
+interface MyContextType {
+  data: string | null;
+  setData: (value: string | null) => void;
+}
+
 const Login = () => {
   const [showpass, setshowpass] = useState(false);
-  const { data, setData } = useContext(MyContext); // Access context values
+  const { data, setData } = useContext(MyContext) as MyContextType; // Access context values
   
-  const PasswordToggler = () => {
-    setshowpass(!showpass);
-  };
+// const navigate = useNavigate();
 
+const PasswordToggler = () => {
+  setshowpass(!showpass);
+};
+
+// import { useEffect } from "react";
+
+// useEffect(() => {
+//   if (data) {
+//     navigate("/");
+//   }
+// }, [data, navigate]);
   interface IFormInput {
     username: string;
     password: string;

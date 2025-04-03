@@ -1,6 +1,6 @@
 import { FaHome, FaQuestionCircle, FaUsers, FaChartBar, FaCog, FaLayerGroup } from "react-icons/fa";
 
-export const Navbar = [
+export const AdminNavbar = [
   {
     label: "Home",
     link: "/",
