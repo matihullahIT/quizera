@@ -22,4 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-/src/components/Notification
+
+# Uncomment the line below if you want to exclude Notification.tsx
+src\components\Notification.tsx
