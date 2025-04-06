@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import { AdminNavbar } from "./constants";
 import Students from "./pages/Students";
+import {MyProvider} from "./context/usercontext";
 // import Home from "./pages/Home";
 // import Quizzes from "./pages/Quizzes";
 // import Categories from "./pages/Categories";
@@ -13,7 +14,12 @@ import Login from "./pages/Login";
 
 const App = () => { 
   return (
+    <MyProvider>
+
     <Router>
+    <Routes>
+        <Route path="/login" element={<Login />} />
+      </Routes>
       {/* Reusable Navbar */}
       <Navbar navbarelements={AdminNavbar}>
       <Routes>
@@ -25,10 +31,9 @@ const App = () => {
         <Route path="/settings" element={<Settings />} /> */}
       </Routes>
       </Navbar>
-      <Routes>
-        <Route path="/login" element={<Login />} />
-      </Routes>
+      
     </Router>
+    </MyProvider>
   );
 };
 
