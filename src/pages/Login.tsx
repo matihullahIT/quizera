@@ -15,7 +15,7 @@ interface MyContextType {
 const Login = () => {
   const [showpass, setshowpass] = useState(false);
   const { data, setData } = useContext(MyContext) as MyContextType; // Access context values
-  
+  const [showerr,setshowerr]=useState(false)
 // const navigate = useNavigate();
 
 const PasswordToggler = () => {
@@ -36,15 +36,35 @@ const PasswordToggler = () => {
 
   const { register, handleSubmit } = useForm<IFormInput>();
   const onSubmit: SubmitHandler<IFormInput> = (formData) => {
-    console.log(formData);
-    console.log(data); // Log context data
-    // Update context with form data
-    setData(`Welcome, ${formData.username}!`);
+      if (!formData.username || !formData.password) {
+        toast.error("Please fill in all fields");
+        setshowerr(true);
+        return;
+      }
+// check if the functions are correctly working or not
+      // if(formData.username!="admin"&&formData.password!="admin"){
+      //   ErrorToggler();
+      //   setshowerr(true);
+      //   return;
 
-    // Show toast notifications
-    toast.success("Login Successfully");
-    toast.info(`Welcome ${formData.username}`);
-  };
+      // }
+      try {
+        console.log(formData);
+        console.log(data); // Log context data
+        // Update context with form data
+        setData(`Welcome, ${formData.username}!`);
+        
+        // Show toast notifications
+        toast.success("Login Successfully");
+        toast.info(`Welcome ${formData.username}`);
+      } catch {
+        ErrorToggler();
+        setshowerr(true);
+      }
+    };
+  const ErrorToggler=() => {
+    toast.error("Login Failed")
+  }
 
   return (
     <>
@@ -62,7 +82,7 @@ const PasswordToggler = () => {
         transition={Bounce}
       />
       <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100">
-        <h1 className="font-bold text-center text-blue-600 mb-6">Login</h1>
+        <h1 className="font-bold text-center text-blue-600 mb-6 text-5xl">Login</h1>
         {/* <p className="text-center mb-4">{data}</p> Display context data */}
         <div className="w-full max-w-md p-8 bg-white rounded-lg shadow-md">
           <div className="font-semibold text-center text-blue-600 mb-6">
@@ -73,6 +93,10 @@ const PasswordToggler = () => {
                   {...register("username", { required: true, maxLength: 20 })}
                   className="w-full px-3 py-2 border rounded-md"
                 />
+                {showerr?<>
+                <span className=" text-red-500 animate-pulse">*Error in user name</span>
+                {ErrorToggler()}
+                </>:<></>}
                 <label htmlFor="password">Password</label>
                 <div className="flex items-center border rounded-md px-3 py-2 space-x-2">
                   <input
@@ -87,6 +111,9 @@ const PasswordToggler = () => {
                     {showpass ? <FaEye /> : <FaEyeSlash />}
                   </span>
                 </div>
+                {showerr?<>
+                <span className=" text-red-500 animate-pulse">*Error in Email</span>
+                </>:<></>}
                 <input
                   type="submit"
                   value="Login"

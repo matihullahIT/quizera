@@ -1,3 +1,4 @@
+import React from "react";
 import { FaHome, FaQuestionCircle, FaUsers, FaChartBar, FaCog, FaLayerGroup } from "react-icons/fa";
 
 export const AdminNavbar = [
@@ -29,6 +30,11 @@ export const AdminNavbar = [
   {
     label: "Settings",
     link: "/settings",
+    icon: <FaCog />,
+  },
+  {
+    label: "login",
+    link: "/login",
     icon: <FaCog />,
   },
 ];
