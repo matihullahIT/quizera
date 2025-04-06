@@ -1,23 +1,35 @@
-import './App.css';
-import Testing from './pages/Testing';
-// import Navbar from './components/Navbar';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Login from './pages/Login'
+// import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import { AdminNavbar } from "./constants";
+import Students from "./pages/Students";
+// import Home from "./pages/Home";
+// import Quizzes from "./pages/Quizzes";
+// import Categories from "./pages/Categories";
+// import Users from "./pages/Users";
+// import Reports from "./pages/Reports";
+// import Settings from "./pages/Settings";
+import Login from "./pages/Login";
 
-import { MyProvider } from './context/usercontext';
-function App() {
+const App = () => { 
   return (
-    <MyProvider>
     <Router>
+      {/* Reusable Navbar */}
+      <Navbar navbarelements={AdminNavbar}>
       <Routes>
-        {/* <Route path="/" element={<Home />} /> */}
+        <Route path="/students" element={<Students />} />
+        {/* <Route path="/" element={<Home />} />
+        <Route path="/categories" element={<Categories />} />
+        <Route path="/users" element={<Users />} />
+        <Route path="/reports" element={<Reports />} />
+        <Route path="/settings" element={<Settings />} /> */}
+      </Routes>
+      </Navbar>
+      <Routes>
         <Route path="/login" element={<Login />} />
-        <Route path="/testing" element={<Testing />} />
-        <Route path="/*" />
       </Routes>
     </Router>
-    </MyProvider>
   );
-}
+};
 
 export default App;
