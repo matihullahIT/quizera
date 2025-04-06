@@ -117,7 +117,7 @@ const PasswordToggler = () => {
                 <input
                   type="submit"
                   value="Login"
-                  className="w-full my-2 bg-blue-600 text-white py-2 rounded-md cursor-pointer hover:bg-blue-700"
+                  className="w-full my-2 bg-blue-600 text-white py-2 rounded-md cursor-pointer "
                 />
               </div>
             </form>

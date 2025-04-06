@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { AdminNavbar as navItems, NavItem } from "../constants/index"; // Import constants
+// import { AdminNavbar as navItems, NavItem } from "../constants/index"; // Import constants
 import { Link } from "react-router-dom"; // Use Link for navigation
 
 const Navbar = ({navbarelements,children}) => {
