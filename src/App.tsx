@@ -1,8 +1,9 @@
 // import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Navbar from "./components/Navbar";
+// import Navbar from "./components/Navbar";
 import { AdminNavbar } from "./constants";
 import Students from "./pages/Students";
+import Layout from "./components/Layout";
 import {MyProvider} from "./context/usercontext";
 // import Home from "./pages/Home";
 // import Quizzes from "./pages/Quizzes";
@@ -15,13 +16,12 @@ import Login from "./pages/Login";
 const App = () => { 
   return (
     <MyProvider>
-
     <Router>
     <Routes>
         <Route path="/login" element={<Login />} />
       </Routes>
       {/* Reusable Navbar */}
-      <Navbar navbarelements={AdminNavbar}>
+      <Layout navbar={AdminNavbar}>
       <Routes>
         <Route path="/students" element={<Students />} />
         {/* <Route path="/" element={<Home />} />
@@ -30,7 +30,7 @@ const App = () => {
         <Route path="/reports" element={<Reports />} />
         <Route path="/settings" element={<Settings />} /> */}
       </Routes>
-      </Navbar>
+      </Layout>
       
     </Router>
     </MyProvider>
