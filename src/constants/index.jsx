@@ -41,42 +41,78 @@ export const AdminNavbar = [
 
 export const students = [
   {
-   
+    roll_number: "A-1",
     name: "Ali Raza",
     email: "ali.raza@example.com",
+    password: "fatima.khan@example.com",
     enrolledDate: "2025-01-10",
-    quizzesTaken: 3,
-    averageScore: '82%',
+    quiz: {
+      taken: 7,
+      passed: 4,
+      failed: 3,
+      average: '82%',
+      status: 'pass',
+    },
+    remaining_quiz: true,
   },
   {
+    roll_number: "A-2",
     name: "Fatima Khan",
     email: "fatima.khan@example.com",
+    password: "fatima.khan@example.com",
     enrolledDate: "2025-01-15",
-    quizzesTaken: 4,
-    averageScore: '91%',
+    quiz: {
+      taken: 7,
+      passed: 6,
+      failed: 1,
+      average: '91%',
+      status: 'pass',
+    },
+    remaining_quiz: true,
   },
   {
-   
+    roll_number: "A-3",
     name: "Usman Tariq",
     email: "usman.tariq@example.com",
+    password: "fatima.khan@example.com",
     enrolledDate: "2025-02-01",
-    quizzesTaken: 2,
-    averageScore: '76%',
+    quiz: {
+      taken: 7,
+      passed: 3,
+      failed: 4,
+      average: '76%',
+      status: 'pass',
+    },
+    remaining_quiz: true,
   },
   {
-   
+    roll_number: "A-4",
     name: "Ayesha Siddiqui",
     email: "ayesha.siddiqui@example.com",
+    password: "fatima.khan@example.com",
     enrolledDate: "2025-03-03",
-    quizzesTaken: 1,
-    averageScore: '88%',
+    quiz: {
+      taken: 7,
+      passed: 5,
+      failed: 2,
+      average: '88%',
+      status: 'pass',
+    },
+    remaining_quiz: true,
   },
   {
-   
+    roll_number: "A-5",
     name: "Zainab Malik",
     email: "zainab.malik@example.com",
+    password: "fatima.khan@example.com",
     enrolledDate: "2025-02-20",
-    quizzesTaken: 0,
-    averageScore: 'N/A',
+    quiz: {
+      taken: 0,
+      passed: 0,
+      failed: 0,
+      average: 'N/A',
+      status: 'fail',
+    },
+    remaining_quiz: false,
   },
 ];
