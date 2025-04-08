@@ -1,1 +1,6 @@
 @import "tailwindcss";
+.student:nth-child(odd) {
+  @apply bg-gray-100;
+  border-radius: 25%;
+
+}
