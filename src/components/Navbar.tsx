@@ -1,11 +1,13 @@
 import { useState } from "react";
 // import { AdminNavbar as navItems, NavItem } from "../constants/index"; // Import constants
 import { Link } from "react-router-dom"; // Use Link for navigation
-
-const Navbar = ({navbarelements,children}) => {
+interface NavbarProps {
+  navbarelements: Array<{ link: string; label: string; icon: JSX.Element }>; // Define the type for navbarelements
+}
+const Navbar = ({ navbarelements }: NavbarProps) => {
   const [isOpen, setIsOpen] = useState(false); // State to toggle mobile menu
 
-  return (<div className="flex flex-col">
+  return (<div className="flex sticky flex-col">
     <nav className="bg-white border-b border-gray-300">
       {/* Navbar Header */}
 
@@ -32,9 +34,6 @@ const Navbar = ({navbarelements,children}) => {
         </div>
       </div>
     </nav>
-    <div className="flex flex-col px-2">
-      {children}
-    </div>
   </div>
   );
 };
